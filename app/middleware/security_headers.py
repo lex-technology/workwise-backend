@@ -1,5 +1,6 @@
+#app/middleware/security_headers.py
 from fastapi import FastAPI, Request
-from fastapi.middleware.base import BaseHTTPMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
@@ -11,4 +12,3 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         response.headers["Content-Security-Policy"] = "default-src 'self'"
         return response
-
